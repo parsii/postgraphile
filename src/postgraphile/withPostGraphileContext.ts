@@ -155,7 +155,6 @@ const withDefaultPostGraphileContext: WithPostGraphileContextFn = async (
           return `begin transaction isolation level ${transactionIsolationLevel}`;
         };
 
-        console.log('beginning transaction with cmd:', getBeginQuery());
         // Begin our transaction
         await pgClient.query(getBeginQuery());
 
