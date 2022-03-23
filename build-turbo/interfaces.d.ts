@@ -137,6 +137,7 @@ export interface HttpRequestHandler<Request extends IncomingMessage = IncomingMe
     /** Experimental! */
     release: () => Promise<void>;
 }
+declare type TransactionIsolationLevel = 'read uncommitted' | 'read committed' | 'repeatable read' | 'serializable';
 /**
  * Options passed to the `withPostGraphileContext` function
  */
@@ -157,6 +158,7 @@ export interface WithPostGraphileContextOptions {
     operationName?: string;
     pgForceTransaction?: boolean;
     singleStatement?: boolean;
+    transactionIsolationLevel?: TransactionIsolationLevel;
     variables?: any;
 }
 export {};
