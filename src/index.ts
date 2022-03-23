@@ -9,6 +9,7 @@ export {
   GraphQLErrorExtended,
   HttpRequestHandler,
   WithPostGraphileContextOptions,
+  TransactionIsolationLevel,
 } from './interfaces';
 
 export {
