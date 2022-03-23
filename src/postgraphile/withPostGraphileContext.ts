@@ -82,6 +82,7 @@ const withDefaultPostGraphileContext: WithPostGraphileContextFn = async (
     operationName,
     pgForceTransaction,
     singleStatement,
+    transactionIsolationLevel
   } = options;
 
   let operation: OperationDefinitionNode | void;
@@ -149,9 +150,14 @@ const withDefaultPostGraphileContext: WithPostGraphileContextFn = async (
         // Connect a new Postgres client
         const pgClient = await pgPool.connect();
 
-        console.log('beginning transaction!');
+        const getBeginQuery = () => {
+          if (!transactionIsolationLevel) return 'begin';
+          return `begin transaction isolation level ${transactionIsolationLevel}`;
+        };
+
+        console.log('beginning transaction with cmd:', getBeginQuery());
         // Begin our transaction
-        await pgClient.query('begin');
+        await pgClient.query(getBeginQuery());
 
         try {
           // If there is at least one local setting, load it into the database.

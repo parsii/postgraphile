@@ -383,6 +383,8 @@ export interface HttpRequestHandler<
   release: () => Promise<void>;
 }
 
+type TransactionIsolationLevel = 'read uncommitted' | 'read committed' | 'repeatable read' | 'serializable';
+
 /**
  * Options passed to the `withPostGraphileContext` function
  */
@@ -401,6 +403,7 @@ export interface WithPostGraphileContextOptions {
   operationName?: string;
   pgForceTransaction?: boolean;
   singleStatement?: boolean;
+  transactionIsolationLevel?: TransactionIsolationLevel;
   // tslint:disable-next-line no-any
   variables?: any;
 }
