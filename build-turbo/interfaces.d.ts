@@ -137,7 +137,7 @@ export interface HttpRequestHandler<Request extends IncomingMessage = IncomingMe
     /** Experimental! */
     release: () => Promise<void>;
 }
-declare type TransactionIsolationLevel = 'read uncommitted' | 'read committed' | 'repeatable read' | 'serializable';
+export declare type TransactionIsolationLevel = 'read uncommitted' | 'read committed' | 'repeatable read' | 'serializable';
 /**
  * Options passed to the `withPostGraphileContext` function
  */

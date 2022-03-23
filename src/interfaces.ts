@@ -383,7 +383,7 @@ export interface HttpRequestHandler<
   release: () => Promise<void>;
 }
 
-type TransactionIsolationLevel = 'read uncommitted' | 'read committed' | 'repeatable read' | 'serializable';
+export type TransactionIsolationLevel = 'read uncommitted' | 'read committed' | 'repeatable read' | 'serializable';
 
 /**
  * Options passed to the `withPostGraphileContext` function
