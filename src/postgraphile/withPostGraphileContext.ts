@@ -149,6 +149,7 @@ const withDefaultPostGraphileContext: WithPostGraphileContextFn = async (
         // Connect a new Postgres client
         const pgClient = await pgPool.connect();
 
+        console.log('beginning transaction!');
         // Begin our transaction
         await pgClient.query('begin');
 
